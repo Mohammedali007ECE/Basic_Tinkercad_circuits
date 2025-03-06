@@ -1,4 +1,4 @@
-###Basic_Tinkercad_circuits
+###BASIC_TINKERCAD_CIRCUITS
 Codes that is used in building circuits
 
 ###_LED_Blinking_circuit
