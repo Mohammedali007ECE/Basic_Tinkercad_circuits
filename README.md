@@ -1,21 +1,21 @@
 ###Basic_Tinkercad_circuits
 Codes that is used in building circuits
 
-```#_LED_Blinking_circuit
+```###_LED_Blinking_circuit
 
-#include <avr/io.h>
-#include <util/delay.h>
+#define LED_PIN 13
 
-int main(void) {
-    DDRB |= (1 << PB5);  // Set PB5 (Pin 13) as output
-  while (1) {
-        PORTB |= (1 << PB5);  // Turn LED ON
-        _delay_ms(1000);
-        PORTB &= ~(1 << PB5); // Turn LED OFF
-        _delay_ms(1000);
-    }
+void setup() {
+  pinMode(LED_PIN, OUTPUT);
 }
-```
+
+void loop() {
+  digitalWrite(LED_PIN, HIGH); // Turn LED ON
+  delay(1000);                 // Wait 1 second
+  digitalWrite(LED_PIN, LOW);  // Turn LED OFF
+  delay(1000);                 // Wait 1 second
+}
+
 ###_Button_Controlled_LED
 ```
 void setup() {
