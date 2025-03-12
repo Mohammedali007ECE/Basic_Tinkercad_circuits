@@ -31,3 +31,49 @@ void loop() {
   }
 }
 ```
+###_Traffic_Light_Controller
+```
+#define RED_LED 8
+#define YELLOW_LED 9
+#define GREEN_LED 10
+
+void setup() {
+  pinMode(RED_LED, OUTPUT);
+  pinMode(YELLOW_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(GREEN_LED, HIGH);
+  delay(3000);
+  digitalWrite(GREEN_LED, LOW);
+  
+  digitalWrite(YELLOW_LED, HIGH);
+  delay(1000);
+  digitalWrite(YELLOW_LED, LOW);
+
+  digitalWrite(RED_LED, HIGH);
+  delay(3000);
+  digitalWrite(RED_LED, LOW);
+}
+```
+###_DC_Motor_Control_with_Transistor
+```
+#define MOTOR_PIN 9
+
+void setup() {
+  pinMode(MOTOR_PIN, OUTPUT);
+}
+
+void loop() {
+  analogWrite(MOTOR_PIN, 255); // Full speed
+  delay(3000);
+  
+  analogWrite(MOTOR_PIN, 128); // Half speed
+  delay(3000);
+  
+  analogWrite(MOTOR_PIN, 0);   // Stop
+  delay(3000);
+}
+
+
