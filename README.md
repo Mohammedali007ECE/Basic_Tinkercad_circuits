@@ -75,5 +75,51 @@ void loop() {
   analogWrite(MOTOR_PIN, 0);   // Stop
   delay(3000);
 }
+```
+###_Buzzer_Beep_Circuit
+```
+void setup() {
+  pinMode(8, OUTPUT);  // Corrected "pinmode" to "pinMode" and "output" to "OUTPUT"
+}
+
+void loop() {
+  digitalWrite(8, HIGH); // Corrected "digital write" to "digitalWrite"
+  delay(500);
+  digitalWrite(8, LOW);
+  delay(500);
+}
+```
+###_LED_chasing_(Sequential_LEDs)
+```
+#define LED1 2
+#define LED2 3
+#define LED3 4
+#define LED4 5
+
+void setup() {
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(LED1, HIGH);
+  delay(200);
+  digitalWrite(LED1, LOW);
+
+  digitalWrite(LED2, HIGH);
+  delay(200);
+  digitalWrite(LED2, LOW);
+
+  digitalWrite(LED3, HIGH);
+  delay(200);
+  digitalWrite(LED3, LOW);
+
+  digitalWrite(LED4, HIGH);
+  delay(200);
+  digitalWrite(LED4, LOW);
+}
+
 
 
