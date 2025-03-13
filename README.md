@@ -89,7 +89,7 @@ void loop() {
   delay(500);
 }
 ```
-###_LED_chasing_(Sequential_LEDs)
+###LED_chasing_(Sequential_LEDs)
 ```
 #define LED1 2
 #define LED2 3
@@ -120,6 +120,3 @@ void loop() {
   delay(200);
   digitalWrite(LED4, LOW);
 }
-
-
-
