@@ -89,7 +89,7 @@ void loop() {
   delay(500);
 }
 ```
-###LED_chasing_(Sequential_LEDs)
+###_LED_Chasing_(Sequential_LEDs)
 ```
 #define LED1 2
 #define LED2 3
@@ -135,6 +135,43 @@ void loop() {
     potValue = analogRead(potPin); 
     int brightness = map(potValue, 0, 1023, 0, 255);
     analogWrite(ledPin, brightness); // Adjust brightness
+}
+```
+###_Temperature_and_Humidity_Monitor
+```
+#include <LiquidCrystal.h>  // Include LCD library
+
+// Initialize LCD with the corresponding pins
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+
+#define TEMP_SENSOR_PIN A0  // Potentiometer connected to A0
+
+void setup() {
+    Serial.begin(9600);  // Start serial communication
+    lcd.begin(16, 2);    // Initialize the LCD
+    lcd.print("Temp Monitor");  // Welcome message
+    delay(2000);
+    lcd.clear();
+}
+
+void loop() {
+    int sensorValue = analogRead(TEMP_SENSOR_PIN); // Read potentiometer value (0-1023)
+    
+    // Convert to temperature (simulated range: 0°C - 50°C)
+    float temperature = map(sensorValue, 0, 1023, 0, 50);
+
+    // Display on Serial Monitor
+    Serial.print("Temperature: ");
+    Serial.print(temperature);
+    Serial.println("°C");
+
+    // Display on LCD
+    lcd.setCursor(0, 0);
+    lcd.print("Temp: ");
+    lcd.print(temperature);
+    lcd.print(" C   ");  // Extra spaces to clear old values
+
+    delay(1000); // Update every second
 }
 
 
