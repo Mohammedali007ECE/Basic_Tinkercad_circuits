@@ -89,7 +89,7 @@ void loop() {
   delay(500);
 }
 ```
-###_LED_Chasing_(Sequential_LEDs)
+###_LED_Chasing(Sequential_LEDs)
 ```
 #define LED1 2
 #define LED2 3
