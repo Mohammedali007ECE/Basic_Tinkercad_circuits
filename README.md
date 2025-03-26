@@ -173,5 +173,57 @@ void loop() {
 
     delay(1000); // Update every second
 }
+```
+###_Temperature_controlled_Fan(using LM35 Sensor)
+```
+// Define the pin numbers
+const int tempPin = A0;     // Pin for the TMP36 sensor (analog input)
+const int fanPin = 3;       // Pin for controlling the fan (digital output)
+
+int tempReading = 0;        // Variable to store the sensor reading
+float voltage = 0.0;        // Voltage output from TMP36
+float temperature = 0.0;    // Temperature in Celsius
+const float thresholdTemp = 25.0;  // Threshold temperature (25°C)
+
+// TMP36 characteristics
+const float VREF = 5.0; // Reference voltage for Arduino (5V)
+
+// Setup function runs once when the program starts
+void setup() {
+  // Initialize the fan control pin as output
+  pinMode(fanPin, OUTPUT);
+  // Start serial communication for debugging
+  Serial.begin(9600);
+}
+
+// Main loop runs repeatedly
+void loop() {
+  // Read the analog value from the TMP36 sensor (0 to 1023)
+  tempReading = analogRead(tempPin);
+
+  // Convert the analog reading to voltage (based on VREF)
+  voltage = tempReading * (VREF / 1023.0);
+
+  // TMP36: 500mV = 0°C and 500mV per degree Celsius
+  // Calculate temperature in Celsius
+  temperature = (voltage - 0.5) * 100.0;
+
+  // Print temperature to the Serial Monitor for debugging
+  Serial.print("Temperature: ");
+  Serial.print(temperature);
+  Serial.println(" C");
+
+  // Control the fan based on the temperature threshold
+  if (temperature >= thresholdTemp) {
+    digitalWrite(fanPin, HIGH);  // Turn on the fan
+    Serial.println("Fan ON");
+  } else {
+    digitalWrite(fanPin, LOW);   // Turn off the fan
+    Serial.println("Fan OFF");
+  }
+
+  // Wait for a short period before reading again
+  delay(1000);
+}
 
 
