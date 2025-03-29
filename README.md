@@ -221,9 +221,37 @@ void loop() {
     digitalWrite(fanPin, LOW);   // Turn off the fan
     Serial.println("Fan OFF");
   }
-
   // Wait for a short period before reading again
   delay(1000);
 }
+```
+###Digital_thermometer_with_LCD_Display
+```
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
+int buttonPin = 7;
+int count = 0;
+bool lastButtonState = LOW;
+
+void setup() {
+  pinMode(buttonPin, INPUT);
+  lcd.begin(16, 2);
+  lcd.print("Press to count:");
+}
+
+void loop() {
+  bool currentState = digitalRead(buttonPin);
+  
+  if (currentState == HIGH && lastButtonState == LOW) {
+    count++;
+    lcd.setCursor(0, 1);
+    lcd.print("Count: ");
+    lcd.print(count);
+    lcd.print("   ");
+    delay(200); // Debounce
+  }
+  
+  lastButtonState = currentState;
+}
 
