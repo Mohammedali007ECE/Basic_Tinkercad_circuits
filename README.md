@@ -303,3 +303,31 @@ void loop() {
         }
     }
 }
+```
+###_TMP36_Temperature_Sensor_&_LCD_Wiring
+```
+#include <LiquidCrystal.h>
+
+#define TMP36_PIN A0  // TMP36 sensor connected to A0
+LiquidCrystal lcd(7, 6, 5, 4, 3, 2);  // LCD connected to Arduino pins
+
+void setup() {
+    lcd.begin(16, 2);      // Initialize LCD
+    lcd.print("Temperature Sensor");
+    delay(2000);
+    lcd.clear();
+}
+
+void loop() {
+    int sensorValue = analogRead(TMP36_PIN); // Read analog value
+    float voltage = sensorValue * (5.0 / 1023.0); // Convert to voltage
+    float temperature = (voltage - 0.5) * 100.0;  // Convert to Celsius
+
+    lcd.setCursor(0, 0);
+    lcd.print("Temp: ");
+    lcd.print(temperature);
+    lcd.print(" C");
+
+    delay(2000);
+}
+
