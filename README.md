@@ -304,7 +304,7 @@ void loop() {
     }
 }
 ```
-###_TMP36_Temperature_Sensor_&_LCD_Wiring
+###TMP36_Temperature_Sensor_&_LCD_Wiring
 ```
 #include <LiquidCrystal.h>
 
